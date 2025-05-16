@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Conn\" />
     <Folder Include="wwwroot\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="2.4.0" />
+    <PackageReference Include="MySqlConnector.DependencyInjection" Version="2.4.0" />
   </ItemGroup>
 
 </Project>

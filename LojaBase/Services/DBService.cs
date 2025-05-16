@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using System;
+using LojaBase.Models;
 
 namespace LojaBase.Services
 {
@@ -9,7 +10,6 @@ namespace LojaBase.Services
     {
         private readonly string _caminhoRoot;
         private readonly string _caminhoArquivo;      
-        private string? stringConexao;
 
 
         public DBService() 
@@ -21,7 +21,14 @@ namespace LojaBase.Services
         public string LoadJson()
         {
             string jsonString = File.ReadAllText(_caminhoArquivo);
+            
+            StringConexao? con = new StringConexao();
+            con = JsonSerializer.Deserialize<StringConexao>(jsonString);
+
+            jsonString = con.conn;
+            
             return jsonString;
+
             //    Person person = JsonSerializer.Deserialize<Person>(jsonString);
 
         }

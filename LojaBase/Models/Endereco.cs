@@ -11,7 +11,7 @@ namespace LojaBase.Models
 
         [Required]
         public string? Logradouro {  get; set; }
-
+        public int Numero { get; set; }
         public string? Complemento { get; set; }
         public string? Unidade { get; set; }
 
@@ -23,7 +23,7 @@ namespace LojaBase.Models
 
         [Required]
         public string? Uf { get; set; }
-
+        public int EstadoId { get; set; }
         public string? Estado { get; set; }
         public string? Regiao { get; set; }
         public string? Ibge { get; set; }

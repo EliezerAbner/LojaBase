@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using LojaBase.CustomValidators;
 
 namespace LojaBase.Models
 {
@@ -10,6 +11,7 @@ namespace LojaBase.Models
         public string? Nome { get; set; }
 
         [Required]
+        [CpfValidatorAtribute]
         public string? Cpf { get; set; }
 
         [Required]
@@ -23,6 +25,7 @@ namespace LojaBase.Models
 
         [Required]
         [EmailAddress(ErrorMessage = "Insira um email válido")]
+        [EmailValidatorAtribute]
         public string? Email { get; set; }
         
         [Required]
