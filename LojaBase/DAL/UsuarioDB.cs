@@ -49,7 +49,7 @@ namespace LojaBase.DAL
             using var connection = new MySqlConnection(_conn);
 
             connection.Open();
-            using var command = new MySqlCommand("SELECT * FROM usuario WHERE status=1",connection);
+            using var command = new MySqlCommand("SELECT * FROM tbUsuario WHERE status=1",connection);
             using var reader = command.ExecuteReader();
             while (reader.Read()) 
             {
@@ -75,7 +75,7 @@ namespace LojaBase.DAL
             using var connection = new MySqlConnection(_conn);
             connection.Open();
             
-            using var command = new MySqlCommand("SELECT TOP 1 cpf FROM usuario WHERE cpf= @cpf and status = 1", connection);
+            using var command = new MySqlCommand("SELECT TOP 1 cpf FROM tbUsuario WHERE cpf= @cpf and status = 1", connection);
             command.Parameters.AddWithValue("@cpf", cpf);
 
             using var reader = command.ExecuteReader();
@@ -102,7 +102,7 @@ namespace LojaBase.DAL
             using var connection = new MySqlConnection(_conn);
             connection.Open();
 
-            using var command = new MySqlCommand("SELECT TOP 1 email FROM email WHERE email = @email and status = 1", connection);
+            using var command = new MySqlCommand("SELECT TOP 1 email FROM tbEmail WHERE email = @email and status = 1", connection);
             command.Parameters.AddWithValue("@email", email);
 
             using var reader = command.ExecuteReader();

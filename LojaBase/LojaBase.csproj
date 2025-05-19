@@ -8,8 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Conn\" />
-    <Folder Include="wwwroot\" />
-    <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>

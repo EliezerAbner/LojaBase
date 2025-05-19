@@ -1,44 +1,61 @@
-﻿using LojaBase.Models;
-using LojaBase.DAL;
-using LojaBase.Services;
+﻿using LojaBase.DAL;
+using LojaBase.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LojaBase.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("/")]
-        public async Task <IActionResult> Index()
+        
+        private readonly ProdutoDB _produtoDB;
+
+        public HomeController() 
         {
+            _produtoDB = new ProdutoDB();
+        }
 
-            Usuario userTeste = new Usuario()
-            {
-                Adm = 1,
-                Nome = "Teste da Silva 2",
-                Cpf = "09905841787",
-                Email = "joazinhoteste@teste.com",
-                Telefone = "44987452147",
-                DataNascimento = Convert.ToDateTime("1998-04-15"),
-                Senha = "123",
-                ConfirmacaoSenha = "123"
-            };
-
-            Endereco endTeste = new Endereco();
-
-            CepService testeServico = new CepService();
-            endTeste = await testeServico.ObterCep("87116202");
+        [Route("/")]
+        public IActionResult Index()
+        {
+           List<Categoria> listaCategorias = new List<Categoria>();
+           List<Produto> listaProdutos = new List<Produto>();
 
             try
             {
-                UsuarioDB dB = new UsuarioDB();
-                dB.NovoUsuario(userTeste, endTeste);
+                listaCategorias = _produtoDB.listaCategorias();
+                listaProdutos = _produtoDB.ListaProdutos();
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
-                throw new Exception(ex.Message);
+                return RedirectToAction("Erro", "Erro", new { id = ex.Message });  
             }
 
-            return Content("");
+            ViewData["categorias"] = listaCategorias;
+            ViewData["produtos"] = listaProdutos;
+            return View();
+        }
+
+        [Route("/pesquisa")]
+        [Route("/pesquisa/{tipoPesquisa}/{id}")]
+        public IActionResult Pesquisa(string search) 
+        {
+            string? tipoPesquisa = Convert.ToString(Request.RouteValues["tipoPesquisa"]);
+            int id = Convert.ToInt32(Request.RouteValues["id"]);
+
+            if (tipoPesquisa == "") 
+            {
+                //pesquisa geral
+            }
+            else if (tipoPesquisa == "categoria") 
+            {
+                //pesquisa produtos em determinada categoria
+            }
+            else if (tipoPesquisa != "categoria") 
+            {
+                //refirecionar para erro 404
+            }
+
+                return View();
         }
     }
 }

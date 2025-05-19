@@ -1,0 +1,11 @@
+﻿body {
+    font-family: Lato, sans-serif;
+    margin-left: 20vh;
+    margin-right: 20vh;
+    background: linear-gradient(360deg,hsl(0, 0%, 100%) 80%, hsl(0, 0%, 95%) 90%);
+    text-align: center;
+}
+
+img{
+    width: 40vh;
+}

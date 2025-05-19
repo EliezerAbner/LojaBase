@@ -11,7 +11,6 @@ namespace LojaBase.Services
         private readonly string _caminhoRoot;
         private readonly string _caminhoArquivo;      
 
-
         public DBService() 
         {
            _caminhoRoot = Directory.GetCurrentDirectory();

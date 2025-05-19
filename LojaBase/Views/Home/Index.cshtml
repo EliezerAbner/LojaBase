@@ -1,0 +1,63 @@
+﻿@using LojaBase.Models;
+
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";      
+}
+
+<main>
+    <article>
+        <div class="painel">
+            <div class="painel-text">
+                <h1>Loja Base</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+
+                <form action="/pesquisa" method="get" class="barra-pesquisa">
+                    <input type="text" placeholder="Pesquisar" name="search">
+                    <button type="submit">
+                        <img src="/img/search.svg" alt="">
+                    </button>
+                </form>
+            </div>
+
+            <img src="/img/panel-test.png" alt="">
+        </div>
+
+        <div class="cabecalho">
+            <h2>Selecione a categoria</h2>
+            <a href="">Mostrar Tudo</a>
+        </div>
+
+        <div class="categoria-container">
+
+            @foreach (Categoria cat in ViewBag.categorias)
+            {
+                <a href="/pesquisa/categoria/@cat.Id">
+                    <div class="categoria">
+                        <img src="/img/gym.svg" alt="@cat.Nome">
+                        <p>@cat.Nome</p>
+                    </div>
+                </a>
+            }
+        </div>
+
+        <div class="cabecalho">
+            <h2>Mais populares</h2>
+            <a href="">Mostrar Tudo</a>
+        </div>
+
+        <div class="produto-container">
+
+            @foreach(Produto prod in ViewBag.produtos)
+            {
+                <a href="/produto/@prod.Id">
+                    <div class="produto">
+                        <img src="/img/produto.png" alt="">
+                        <h3>@prod.Nome</h3>
+                        <p>R$ @prod.Preco</p>
+                    </div>
+                </a>
+            }   
+        </div>
+    </article>
+</main>
+
