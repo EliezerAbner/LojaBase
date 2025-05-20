@@ -4,7 +4,10 @@ namespace LojaBase.Models
 {
     public class Produto
     {
+        [Required]
         public int Id { get; set; }
+
+        public int CategoriaId { get; set; }
         
         [Required]
         public string? Nome { get; set; }

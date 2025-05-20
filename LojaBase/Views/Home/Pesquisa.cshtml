@@ -2,4 +2,18 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
+@using LojaBase.Models;
+
+<div class="produto-container">
+
+    @foreach (Produto prod in ViewBag.produtos)
+    {
+        <a href="/produto/@prod.Id" class="produto">
+            <img src="/img/produto.png" alt="@prod.Nome">
+            <h3>@prod.Nome</h3>
+            <p>R$ @prod.Preco</p>
+        </a>
+    }
+</div>
+
 

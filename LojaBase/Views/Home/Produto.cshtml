@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+@using LojaBase.Models;
+
+@{
+    Produto? produto = ViewBag.produto;
+}
+
+<h1>@produto.Nome</h1>
+
+@foreach (Comentario? comentario in ViewBag.comentarios)
+{
+    <h2>@comentario.NomeUsuario</h2> 
+    <p>@comentario.Id</p>
+    <br>
+    <p>@comentario.DataComentario</p> 
+    <p>@comentario.Coment</p>
+    
+}

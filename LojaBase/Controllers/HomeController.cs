@@ -24,15 +24,16 @@ namespace LojaBase.Controllers
             {
                 listaCategorias = _produtoDB.listaCategorias();
                 listaProdutos = _produtoDB.ListaProdutos();
+
+                ViewData["categorias"] = listaCategorias;
+                ViewData["produtos"] = listaProdutos;
+                ViewData["titulo"] = "LojaBase";
+                return View();
             }
             catch (Exception ex) 
             {
                 return RedirectToAction("Erro", "Erro", new { id = ex.Message });  
             }
-
-            ViewData["categorias"] = listaCategorias;
-            ViewData["produtos"] = listaProdutos;
-            return View();
         }
 
         [Route("/pesquisa")]
@@ -42,20 +43,63 @@ namespace LojaBase.Controllers
             string? tipoPesquisa = Convert.ToString(Request.RouteValues["tipoPesquisa"]);
             int id = Convert.ToInt32(Request.RouteValues["id"]);
 
-            if (tipoPesquisa == "") 
+            List<Produto> produtos = new List<Produto>();
+
+            try
             {
-                //pesquisa geral
-            }
-            else if (tipoPesquisa == "categoria") 
-            {
-                //pesquisa produtos em determinada categoria
-            }
-            else if (tipoPesquisa != "categoria") 
-            {
-                //refirecionar para erro 404
-            }
+                if (tipoPesquisa == "")
+                {
+                    produtos = _produtoDB.BuscaProdutos(0, search);
+                    ViewData["titulo"] = $"LojaBase - {search}";
+                }
+                else if (tipoPesquisa == "categoria")
+                {
+                    produtos = _produtoDB.BuscaProdutos(id);
+                    ViewData["titulo"] = "LojaBase";
+                }
+                else if (tipoPesquisa != "categoria")
+                {
+                    return RedirectToAction("Erro", "Erro", new { id = "Ops! Parece que essa página não existe." });
+                }
+
+                ViewData["produtos"] = produtos;
 
                 return View();
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Erro", "Erro", new { id = ex.Message });
+            }
+        }
+
+        [Route("/produto/{id}")]
+        public IActionResult Produto()
+        {
+            int id = Convert.ToInt32(Request.RouteValues["id"]);
+
+            try
+            {
+                Produto? prod = _produtoDB.BuscaProduto(id);
+
+                if (prod.Id == 0) 
+                {
+                    return RedirectToAction("Erro", "Erro", new { id = "Ops! Parece que essa página não existe." });
+                }
+
+                List<Imagem> images = _produtoDB.ImagensProduto(id);
+                List<Comentario> comentarios = _produtoDB.ListaComentarios(id);
+
+                ViewBag.Produto = prod;
+                ViewBag.Images = images;
+                ViewBag.Comentarios = comentarios;
+                ViewData["titulo"] = $"LojaBase - {prod.Nome}";
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Erro", "Erro", new { id = ex.Message });
+            }
         }
     }
 }
