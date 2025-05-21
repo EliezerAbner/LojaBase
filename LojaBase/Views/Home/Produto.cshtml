@@ -1,21 +1,78 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
-}
 
+    Produto prod = ViewBag.Produto;
+}
 @using LojaBase.Models;
 
-@{
-    Produto? produto = ViewBag.produto;
-}
+<article>
+    <div class="imagens">
+        <button id="imgAnt" class="prod-slider">
+            <img src="/img/angle-left.svg" alt="imagem anterior" onclick="imgAnt">
+        </button>
 
-<h1>@produto.Nome</h1>
+        <img src="/img/default-error-image.png" alt="">
 
-@foreach (Comentario? comentario in ViewBag.comentarios)
-{
-    <h2>@comentario.NomeUsuario</h2> 
-    <p>@comentario.Id</p>
-    <br>
-    <p>@comentario.DataComentario</p> 
-    <p>@comentario.Coment</p>
-    
-}
+        <button id="proxImg" class="prod-slider">
+            <img src="/img/angle-right.svg" alt="imagem anterior" onclick="proxImg">
+        </button>
+    </div>
+
+    <div class="basic-info">
+        <div class="content">
+            <h1>@prod.Nome</h1>
+            <h2 id="preco">R$ @prod.Preco</h2>
+            <p id="condicao">R$ 99,00 a vista ou em até 9x de 9,90 sem juros</p>
+            <p id="rating"> 3 estrelas</p>
+        </div>
+
+        <div class="buttons">
+            <button id="comprarBtn">Comprar</button>
+            <button id="carrinhoBtn">
+                <img src="/img/shopping-cart.svg" alt="">
+            </button>
+        </div>
+    </div>
+</article>
+<aside>
+    <h2>Parecidos com @prod.Nome</h2>
+    <div class="produtos-parecidos">
+
+        @foreach (Produto prodParecido in ViewBag.ProdParecidos)
+        {
+            <a class="produto-parecido" href="/produto/@prodParecido.Id">
+                <img src="/img/produto.png" alt="@prodParecido.Nome">
+                <h3>@prodParecido.Nome</h3>
+                <p>R$ @prodParecido.Preco</p>
+            </a>
+        }
+    </div>
+
+    <h2>Info Adicional</h2>
+    <div class="info-adicional">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, nemo. Eveniet cumque numquam ipsam blanditiis officiis dicta sunt, modi a voluptatibus, animi cum! Consequatur, soluta modi nemo blanditiis corrupti possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut tenetur minus quae eligendi iure hic beatae, et illo nemo distinctio repellendus, consequatur quibusdam odio commodi obcaecati aspernatur quo fuga! Fuga! Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias accusamus ut, nihil eaque mollitia tempore debitis cum error aliquam tempora maxime officiis temporibus et provident inventore est qui soluta voluptates.</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, iusto, consectetur alias labore esse ipsum dolores nemo maxime quaerat magnam fugit incidunt, qui quos! Neque ut rerum maxime voluptatum illo.</p>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, nemo. Eveniet cumque numquam ipsam blanditiis officiis dicta sunt, modi a voluptatibus, animi cum! Consequatur, soluta modi nemo blanditiis corrupti possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut tenetur minus quae eligendi iure hic beatae, et illo nemo distinctio repellendus, consequatur quibusdam odio commodi obcaecati aspernatur quo fuga! Fuga! Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias accusamus ut, nihil eaque mollitia tempore debitis cum error aliquam tempora maxime officiis temporibus et provident inventore est qui soluta voluptates.</p>
+    </div>
+
+    <h2>Avaliações</h2>
+
+    <div class="comentario-container">
+        @foreach (Comentario coment in ViewBag.Comentarios)
+        {
+            <div class="comentario">
+                <h3>@coment.NomeUsuario</h3>
+                <p id="data-postagem">Postado em @coment.DataComentario</p>
+                <p>@coment.Coment</p>
+
+                <a href="" class="curtida">
+                    <p> ☻ Achei útil (98)</p>
+                </a>
+            </div>
+        }
+    </div>
+</aside>
+
+<script src="/js/Produto.js"></script>

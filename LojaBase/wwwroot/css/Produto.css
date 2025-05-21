@@ -1,0 +1,116 @@
+body{
+    margin-left: 10vh;
+    margin-right: 10vh;
+}
+
+article{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+aside h2{
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.imagens{
+    display: flex;
+}
+
+.imagens img{
+    width: 60vh;
+}
+
+.prod-slider{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.prod-slider:hover{
+    background-color: hsl(0, 0%, 92%);
+}
+
+.prod-slider img{
+    width: 20px;
+}
+
+.basic-info{
+    display: flex;
+    width: 40vh;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px 30px;
+
+}
+
+.content{
+    flex: 1;
+}
+
+.content h1{
+    text-align: center;
+}
+
+.content h2{
+    font-size: 1.5em;
+}
+
+.content p{
+    font-weight: normal;
+    font-size: 0.6em;
+    margin: 0;
+}
+
+.buttons button{ 
+    padding: 15px;
+    font-size: 1.2em;
+    cursor: pointer;  
+}
+
+#comprarBtn{
+    width: 80%;
+}
+
+.buttons img{
+    width: 20px;
+}
+
+.produtos-parecidos{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.produto-parecido{
+    width: 150px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.produto-parecido img{
+    width: 100%;
+}
+
+.comentario{
+    width: 40%;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 3px 5px 3px 3px rgb(234,234,234);
+}
+
+#data-postagem{
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.curtida{
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 0.5px;
+    width: fit-content;
+}

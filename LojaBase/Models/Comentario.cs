@@ -7,8 +7,8 @@
         public int UsuarioId { get; set; }
         public string? NomeUsuario { get; set; }
         public string? Coment { get; set; }
-
         public DateTime? DataComentario { get; set; }
+        public int Curtidas { get; set; }
         public bool? Visivel { get; set; }
         public int Status { get; set; }
     }

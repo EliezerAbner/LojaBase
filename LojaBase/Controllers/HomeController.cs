@@ -75,10 +75,9 @@ namespace LojaBase.Controllers
         [Route("/produto/{id}")]
         public IActionResult Produto()
         {
-            int id = Convert.ToInt32(Request.RouteValues["id"]);
-
             try
             {
+                int id = Convert.ToInt32(Request.RouteValues["id"]);
                 Produto? prod = _produtoDB.BuscaProduto(id);
 
                 if (prod.Id == 0) 
@@ -88,10 +87,13 @@ namespace LojaBase.Controllers
 
                 List<Imagem> images = _produtoDB.ImagensProduto(id);
                 List<Comentario> comentarios = _produtoDB.ListaComentarios(id);
+                List<Produto> prodParecidos = _produtoDB.BuscaProdutos(prod.CategoriaId);
 
                 ViewBag.Produto = prod;
                 ViewBag.Images = images;
                 ViewBag.Comentarios = comentarios;
+                ViewBag.ProdParecidos = prodParecidos;
+                ViewBag.Css = "/css/Produto.css";
                 ViewData["titulo"] = $"LojaBase - {prod.Nome}";
 
                 return View();

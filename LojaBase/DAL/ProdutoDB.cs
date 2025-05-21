@@ -140,17 +140,18 @@ namespace LojaBase.DAL
             try
             {
                 connection.Open();
-                command = new MySqlCommand("SELECT produtoId,nomeProduto, descricao, preco, imagem FROM tbProduto WHERE produtoId = @produtoId", connection);
+                command = new MySqlCommand("SELECT produtoId,categoriaId,nomeProduto, descricao, preco, imagem FROM tbProduto WHERE produtoId = @produtoId", connection);
                 command.Parameters.AddWithValue("@produtoId", produtoId);
                 using var reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
                     produto.Id = reader.GetInt32(0);
-                    produto.Nome = reader.GetString(1);
-                    produto.Descricao = reader.GetString(2);
-                    produto.Preco = Convert.ToDecimal(reader.GetDecimal(3));
-                    produto.Imagem = reader.GetString(4);
+                    produto.CategoriaId = reader.GetInt32(1);
+                    produto.Nome = reader.GetString(2);
+                    produto.Descricao = reader.GetString(3);
+                    produto.Preco = Convert.ToDecimal(reader.GetDecimal(4));
+                    produto.Imagem = reader.GetString(5);
                     //produto.Quantidade = Convert.ToDouble(reader.GetString(5)),
                     //produto.TipoQuantidade = reader.GetString(6)
                 }
