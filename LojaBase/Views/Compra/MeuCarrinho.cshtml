@@ -1,0 +1,25 @@
+﻿@using LojaBase.Models;
+
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<main>
+    <article>
+        <div class="carrinho-container">
+
+            @foreach(Carrinho ca in ViewBag.itens)
+            {
+                <div class="itens">
+                    <img src="~/img/produto.png" alt="@ca.NomeProduto" />
+                    <h2>@ca.NomeProduto</h2>
+                    <p>@ca.Quantidade</p>
+                </div>
+            }
+        </div>
+
+        <div class="info-container">
+
+        </div>
+    </article>
+</main>

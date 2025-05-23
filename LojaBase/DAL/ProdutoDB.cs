@@ -73,7 +73,7 @@ namespace LojaBase.DAL
                 }
                 connection.Close();
             }
-            catch (Exception ex) 
+            catch  
             {
                 return listaProdutos;
             }
@@ -124,7 +124,7 @@ namespace LojaBase.DAL
                 connection.Close();
                 return buscaProdutos;
             }
-            catch (Exception ex)
+            catch
             {
                 return buscaProdutos;
             }   
@@ -158,7 +158,7 @@ namespace LojaBase.DAL
                 connection.Close();
                 return produto;
             }
-            catch (Exception ex)
+            catch
             {
                 return produto;
             }
@@ -191,7 +191,7 @@ namespace LojaBase.DAL
                 }
                 connection.Close();
             }
-            catch (Exception ex)
+            catch
             {
                 return imagens;
             }
@@ -228,7 +228,7 @@ namespace LojaBase.DAL
                 }
                 connection.Close();
             }
-            catch (Exception ex)
+            catch
             {
                 return comentarios;
             }
