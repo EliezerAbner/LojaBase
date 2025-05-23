@@ -99,6 +99,7 @@ article a {
     margin: 10px;
     padding: 10px;
     width: 150px;
+    height: 110px;
     align-items: center;
     text-align: center;
     background-color: hsl(0, 0%, 98%);
@@ -109,7 +110,7 @@ article a {
     width: 50px;
 }
 
-.produto-container{
+#produto-container{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
