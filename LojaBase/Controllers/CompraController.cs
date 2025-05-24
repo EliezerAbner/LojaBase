@@ -29,6 +29,7 @@ namespace LojaBase.Controllers
                 listaItens = _carrinhoDB.ItensCarrinho(usuarioId);
 
                 ViewBag.listaItens = listaItens;
+                ViewBag.Css = "/css/MeuCarrinho.css";
 
                 return View();
             }

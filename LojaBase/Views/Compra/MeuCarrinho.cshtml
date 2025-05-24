@@ -8,18 +8,23 @@
     <article>
         <div class="carrinho-container">
 
-            @foreach(Carrinho ca in ViewBag.itens)
+            @foreach (Carrinho item in ViewBag.listaItens)
             {
                 <div class="itens">
-                    <img src="~/img/produto.png" alt="@ca.NomeProduto" />
-                    <h2>@ca.NomeProduto</h2>
-                    <p>@ca.Quantidade</p>
+                    <img src="~/img/produto.png" alt="@item.NomeProduto"/>
+                    <div class="item-info">
+                        <h2>@item.NomeProduto</h2>
+                        <p>Quantidade: @item.Quantidade</p>
+                    </div>
+
                 </div>
             }
         </div>
 
         <div class="info-container">
-
+            <h2>Subtotal: </h2>
+            <p></p>
+            <button>Finalizar compra</button>
         </div>
     </article>
 </main>

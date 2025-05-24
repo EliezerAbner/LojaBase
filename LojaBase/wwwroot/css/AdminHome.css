@@ -1,0 +1,49 @@
+body{
+    margin: 0;
+    font-family: "Outfit", sans-serif;
+}
+
+header img{
+    width: 150px;
+}
+
+nav{
+    height: fit-content;
+    border: 1px solid black;
+}
+
+main{
+    height: 75vh;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+main a{
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+}
+
+main a:hover{
+    font-weight: bolder;
+}
+
+.footer-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.footer-buttons a{
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.footer-buttons a:hover{
+    background-color: grey;
+}
+
+.footer-buttons a img{
+    width: 25px;
+}

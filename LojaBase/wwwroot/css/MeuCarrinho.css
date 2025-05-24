@@ -1,0 +1,14 @@
+﻿article{
+    display:flex;
+    
+}
+
+.itens{
+    margin: 20px;
+    display: flex;
+}
+
+.itens img{
+    width: 100px;
+    margin-right: 20px;
+}

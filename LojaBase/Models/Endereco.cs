@@ -5,6 +5,7 @@ namespace LojaBase.Models
     public class Endereco
     {
         public int EnderecoId { get; set; }
+        public int UsuarioId { get; set }
 
         [Required]
         public string? Cep { get; set; }
