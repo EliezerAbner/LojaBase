@@ -1,0 +1,36 @@
+table {
+    overflow: auto;
+    height: 70vh;
+}
+
+.cabecalho{
+    background-color: brown;
+    padding: 25px;
+    color: white;
+}
+
+.row-data{
+    padding: 15px;
+    border: 1px solid black;
+}
+
+tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+
+td{
+    text-align: center;
+
+}
+
+td img{
+    width: 20px;
+    padding: 2px;
+}
+
+td a:hover{
+    width: 30px;
+}
+
+
+

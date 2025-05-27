@@ -1,6 +1,8 @@
 body{
     margin: 0;
     font-family: "Outfit", sans-serif;
+    display: flex;
+    flex-direction: column
 }
 
 header img{
@@ -9,7 +11,10 @@ header img{
 
 nav{
     height: fit-content;
-    border: 1px solid black;
+}
+
+nav img{
+    margin-left: 15px;
 }
 
 main{
@@ -27,6 +32,10 @@ main a{
 
 main a:hover{
     font-weight: bolder;
+}
+
+.footer{
+
 }
 
 .footer-buttons{

@@ -86,10 +86,9 @@ namespace LojaBase.DAL
             List<Produto> buscaProdutos = new List<Produto>();
             MySqlCommand command;
 
-            using var connection = new MySqlConnection(_conn);
-
             try
             {
+                using var connection = new MySqlConnection(_conn);
                 connection.Open();
 
                 if (nomeProduto != null)
